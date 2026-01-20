@@ -59,11 +59,23 @@
 <body>
     <div class="container">
         <div class="checkmark">✓</div>
-        <h1>¡Tu transacción se ha completado con éxito!</h1>
-
+        <h1 id="description"></h1>
         <footer>
             &copy; 2025 Ingeteam.
         </footer>
     </div>
+    <script>
+      const texts = {
+        'es': { title: 'Pago realizado correctamente', description: '¡Tu transacción se ha completado con éxito!' },
+        'en': { title: 'Payment made correctly', description: 'Your transaction has been completed successfully!' },
+        'fr': { title: 'Paiement effectué correctement', description: 'Votre transaction a été effectuée avec succès !' }
+      };
+      const userLang = navigator.language || navigator.languages[0];
+      const langCode = userLang.split('-')[0];
+      const selectedTexts = texts[langCode] || texts['en'];
+      document.title = selectedTexts.title;
+      document.getElementById('description').textContent = selectedTexts.description;
+    </script>
 </body>
 </html>
+
